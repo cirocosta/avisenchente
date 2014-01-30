@@ -1,0 +1,5 @@
+# Dev dependencies and local environment
+.env/
+lib/
+build/
+secrets.*
