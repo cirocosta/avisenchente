@@ -1,0 +1,16 @@
+nav {
+    margin-bottom: 0 !important;
+}
+
+header {
+    height: 500px;
+    padding-top: 0;
+}
+
+header p {
+    line-height: 1.4;
+    margin-top: 60px;
+    max-width: 800px;
+    margin: auto;
+    font-size: 30px;
+}

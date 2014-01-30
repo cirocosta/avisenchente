@@ -3,15 +3,80 @@
 <link rel="stylesheet" type="text/css" href="static/css/index.css">
 {%endblock%}
 {%block content%}
-<header class="jumbotron">
+
+<nav class="navbar navbar-default" role="navigation">
   <div class="container">
-    <h1>AvisENCHENTE!</h1>
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+  </div>
+</nav>
+
+
+<header class="jumbotron text-center">
+    <p>Uma rede de aparelhos conectados para o bem comum: aumentar a previsão do risco de enchentes</p>
+    <button class="btn btn-primary">Saiba mais!</button>
   </div>
 </header>
 
 <div class="container">
-  <button class="btn btn-success">Go to shopping cart </button>
+  <div class="row">
+    <div class="col-md-3">
+      <h2>Regiões</h2>
+      <ul class="list-unstyled">
+        <li class="active">Sorocaba</li>
+        <li>Piracicaba</li>
+        <li>Avaré</li>
+        <li>Boituva</li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <h2>Como está %s</h2>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">  
+    <h2>Saiba mais</h2>
+    <div class="row">
+      <div class="col-md-9">
+
+      </div>
+      <div class="col-md-3">
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        
+
+      </div>
+      <div class="col-md-3">
+        
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        
+
+      </div>
+      <div class="col-md-3">
+        
+        
+      </div>
+    </div>
+  </div>
 
 </div>
+
 
 {%endblock%}
