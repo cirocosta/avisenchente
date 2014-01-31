@@ -1,11 +1,12 @@
 {%extends 'base/base.html'%}
 {%block extrahead%}
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="/static/js/nv.d3.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 {%endblock%}
 {%block content%}
 <div class="container">
-  <h3 class="text-muted text-center">Informações para o aparelho {name}</h2>
+  <h3 class="text-muted text-center">Informações para o aparelho {{name}} - <strong>{{token}}</strong></h2>
   <hr>
   <div class="col-md-3">
     <p class="lead text-muted">Sensores</p>
@@ -26,4 +27,35 @@
 
   </div> 
 </div>
+
+<script type="text/javascript">
+var request = new XMLHttpRequest();
+request.open("GET", "/usuario/data/{{token}}/luminosidade", true);
+request.onload = function(){
+  d3.json('/usuario/data/{{token}}/luminosidade', function(data) {
+    nv.addGraph(function() {
+      var chart = nv.models.stackedAreaChart()
+                    .x(function(d) { return d[0] })
+                    .y(function(d) { return d[1] })
+                    .clipEdge(true);
+
+        chart.xAxis
+            .tickFormat(function(d) { return d3.time.format('%x')(new Date(d)) });
+   
+       chart.yAxis
+           .tickFormat(d3.format(',.2f'));
+   
+       d3.select('#chart svg')
+         .datum(data)
+           .transition().duration(500).call(chart);
+   
+       nv.utils.windowResize(chart.update);
+   
+       return chart;
+   });
+ });
+};
+request.send();
+
+</script>
 {%endblock%}

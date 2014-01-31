@@ -39,7 +39,7 @@
       request.onload = function() {
         data = JSON.parse(this.response);
         if (data.success) {
-          window.alert("Login OK!");
+          window.location.href = "/usuario";
         } else {
           window.alert("Nome e/ou Token não conferem");
         }
