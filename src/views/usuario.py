@@ -8,6 +8,8 @@ from models import usuario
 from models import measures
 from utils import fetcher
 
+# Mapeamento dos nomes dos parametros GET para o nome
+# correto vindo do DCA
 SENSOR_TYPES = {
     "luminosidade": "luminousIntensity",
     "ruido": "sound",
@@ -15,7 +17,9 @@ SENSOR_TYPES = {
     "humidade": "relativeHumidity"
 }
 
+
 def _datetimeToUnixTime(dt_date):
+    """ Dado um objeto datetime retorna o int em Unix Time """
     return time.mktime(dt_date.timetuple())
 
 
@@ -26,15 +30,18 @@ class UsuarioIndex(webapp2.RequestHandler):
 
     def get(self, token):
         aparelho = usuario.Aparelho().get_aparelho_from_token(token)
+        medidas = measures.Measure().query().iter(limit=20)
         template_values = {
             "token": aparelho.token if aparelho else None,
-            "nome": aparelho.nome if aparelho else None
+            "nome": aparelho.nome if aparelho else None,
+            "measures": medidas
         }
         template = settings.JINJA_ENVIRONMENT.get_template(
             'usuario/index.html')
         self.response.write(template.render(template_values))
 
 class UsuarioData(webapp2.RequestHandler):
+    """ Retorna de modo conveniente ao NVD3.js tratar os dados """
 
     def get(self, sensor, token):
 
@@ -52,36 +59,10 @@ class UsuarioData(webapp2.RequestHandler):
         self.response.write(json.dumps(objeto))
 
 
-# class UsuarioRuido(webapp2.RequestHandler):
-
-#     def get(self, token):
-#         measures.Measure().get_filtered_measures("sound")
-
-
-#         self.response.headers['Content-Type'] = 'application/json'
-#         self.response.write(json.dumps(objeto))
-
-
-# class UsuarioTemperatura(webapp2.RequestHandler):
-
-#     def get(self, token):
-#         measures.Measure().get_filtered_measures("temperature")
-
-#         self.response.headers['Content-Type'] = 'application/json'
-#         self.response.write(json.dumps(objeto))
-
-
-# class UsuarioHumidade(webapp2.RequestHandler):
-
-#     def get(self, token):
-#         measures.Measure().get_filtered_measures("relativeHumidity")
-
-#         self.response.headers['Content-Type'] = 'application/json'
-#         self.response.write(json.dumps(objeto))
-
-
 class Login(webapp2.RequestHandler):
-    
+    """ Handler para o login do usuario. """
+
+
     def get(self):
         template_values = dict()
         template = settings.JINJA_ENVIRONMENT.get_template(

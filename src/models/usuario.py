@@ -8,6 +8,7 @@ class Aparelho(EndpointsModel):
 
     @classmethod
     def validate_login(cls, name, token):
+        """ Validacao super simples de login """
         aparelhos = cls.query(cls.token == token).iter()
         for aparelho in aparelhos:
         	if aparelho.nome == name:
@@ -16,6 +17,7 @@ class Aparelho(EndpointsModel):
 
     @classmethod
     def get_tokens(cls):
+        """ Retorna uma lista de todos os tokens cadastrados """
         aparelhos = cls.query().iter()
         lista_tokens = []
         for aparelho in aparelhos:
@@ -24,6 +26,7 @@ class Aparelho(EndpointsModel):
 
     @classmethod
     def get_aparelho_from_token(cls, token):
+        """ Dado um token retorna o Aparelho se existir """
         aparelhos = cls.query(cls.token == token).iter()
         if aparelhos.has_next():
             return aparelhos.next()

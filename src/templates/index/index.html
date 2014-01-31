@@ -1,5 +1,14 @@
 {%extends 'base/base.html'%}
 {%block extrahead%}
+<style type="text/css">
+  #map {
+    width: 400px;
+    height: 200px;
+  }
+</style>
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?&sensor=true">
+</script>
 <link rel="stylesheet" type="text/css" href="static/css/index.css">
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 {%endblock%}
@@ -16,14 +25,15 @@
     <div class="col-md-3">
       <h2>Regiões</h2>
       <ul class="list-unstyled">
-        <li class="active">Sorocaba</li>
-        <li>Piracicaba</li>
-        <li>Avaré</li>
-        <li>Boituva</li>
+        <li class="active"><a href="/regiao/sorocaba">Sorocaba</a></li>
+        <li><a href="/regiao/piracicaba">Piracicaba</a></li>
+        <li><a href="/regiao/avare">Avaré</a></li>
+        <li><a href="/regiao/boituva">Boituva</a></li>
       </ul>
     </div>
     <div class="col-md-9">
-      <h2>Como está %s</h2>
+      <h2>Como está</h2>
+      <div id="map"></div>
     </div>
   </div>
 </div>
@@ -34,21 +44,162 @@
       <div class="col-md-4 text-center">
         <i class="fa fa-suitcase fa-5x"></i><br/>
         <p><strong>Aparelho</strong></p>
-        <p class="text-muted">asdhiuhsiuadshuh</p>
+        <p class="text-muted">Obtém informações do meio externo, armaze-na caso não haja rede e as envia o mais rápido possível</p>
       </div>
       <div class="col-md-4 text-center">
         <i class="fa fa-mobile fa-5x"></i><br/>
         <p><strong>Aplicação</strong></p>
-        <p class="text-muted">asdhiuhsiuadshuh</p>
+        <p class="text-muted">Visualizador das medições da região e alerta</p>
       </div>
       <div class="col-md-4 text-center">
         <i class="fa fa-lightbulb-o fa-5x"></i><br/>
         <p><strong>Ideia</strong></p>
-        <p class="text-muted">asdhiuhsiuadshuh</p>
+        <p class="text-muted">Reduzir grandes perdas em desastres de causa natural através da contribuição dos modedores de regiões cujo incentivo governamental é baixo</p>
       </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+  /* Configuracoes de estilo do mapa personalizado */
+
+  var myOptions = {
+    zoom: 15,
+    center: new google.maps.LatLng(53.385873, -1.471471),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    styles: [
+    {
+        "featureType": "landscape",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 65
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 51
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 30
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 40
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.province",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "lightness": -25
+            },
+            {
+                "saturation": -100
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "hue": "#ffff00"
+            },
+            {
+                "lightness": -25
+            },
+            {
+                "saturation": -97
+            }
+        ]
+    }
+]
+};
+
+/* Inicializa o mapa colocando-o na div correta */
+
+function initialize(){
+  var map = new google.maps.Map(document.getElementById('map'), myOptions);
+}
+
+/*  Executa a funcao initialize como callback do carregamento da 
+    pagina*/
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
 
 
 {%endblock%}
