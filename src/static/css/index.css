@@ -3,14 +3,43 @@ nav {
 }
 
 header {
-    height: 500px;
+    height: 400px;
     padding-top: 0;
+    background: url(/static/img/enchentes1.jpg) no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    min-height:100%;position:relative;
 }
 
 header p {
     line-height: 1.4;
-    margin-top: 60px;
     max-width: 800px;
     margin: auto;
-    font-size: 30px;
+    font-size: 35px !important  ;
+    position: relative;
+    top: 50px;
+
+    color: white !important;
+    text-shadow: 0 1px rgb(133, 81, 81);
+    font-size: 40px !important;
+    line-height: 1.2;
+    font-weight: bold !important;
+}
+
+header button {
+    position: relative;
+    top: 50px;
+    border-radius: 0 !important;
+}
+
+i {
+    color: #3276b1;
+}
+
+.sobre p {
+    line-height: 1;
+    margin-bottom: 0;
+    margin-top: 0;
 }
