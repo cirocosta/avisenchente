@@ -1,0 +1,58 @@
+{%extends 'base/base.html'%}
+{%block extrahead%}
+<link rel="stylesheet" type="text/css" href="/static/css/usuario_criar.css">
+{%endblock%}
+{%block content%}
+<div class="container text-center">
+  <h1>Login</h1>
+  <h3>Acesse os dados de seu aparelho</h3>
+  <div class="signup-card">
+    <img src="/static/img/qrcode.png" alt="Qr Code" class="img-circle">
+    <form method="POST" action="/usuario/login">
+      <input id="i_nome" name="nome" placeholder="Nome para Aparelho"/><br>
+      <input id="i_token" name="token" placeholder="token" /><br>      
+    </form>
+    <button id="b_entrar" class="btn btn-success">Entrar!</button>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function serializeObj(obj) {
+    var str = [];
+    for(var p in obj){
+      if (obj.hasOwnProperty(p)) {
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+      }
+    }
+    return str.join("&");
+  }
+
+  var b_entrar = document.getElementById("b_entrar");
+  var i_nome = document.getElementById("i_nome");
+  var i_token = document.getElementById("i_token");
+  b_entrar.onclick = function(){
+    if(i_nome.value && i_token.value){
+      var request = new XMLHttpRequest();
+      request.open("POST", "/usuario/login", true);
+      request.setRequestHeader('Content-type', 
+                                'application/x-www-form-urlencoded');
+      request.onload = function() {
+        data = JSON.parse(this.response);
+        if (data.success) {
+          window.location.href = "/usuario";
+        } else {
+          window.alert("Nome e/ou Token não conferem");
+        }
+      }
+      request.send(serializeObj({
+        nome: i_nome.value,
+        token: i_token.value
+      }));
+    } else {
+      window.alert("Há campos não preenchidos");
+    }
+  };
+
+
+</script>
+{%endblock%}

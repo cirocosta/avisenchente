@@ -12,4 +12,8 @@ class Measure(EndpointsModel):
     value = ndb.FloatProperty()
     sampling_time = ndb.DateProperty()
     inserted_at = ndb.DateProperty(auto_now_add=True)
-    
+
+    @classmethod
+    def get_filtered_measures(cls, m_filter, token):
+    	return cls.query(cls.name == m_filter, cls.token == token).iter()
+

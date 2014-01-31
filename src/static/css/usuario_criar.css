@@ -1,0 +1,58 @@
+body {
+    background: #FAFAFA;
+    padding-bottom: 30px;
+}
+
+h1 {
+    color: rgb(120, 120, 120);
+}
+
+h3 {
+    color: rgb(165, 165, 165);
+}
+
+.signup-card {
+    margin-top: 50px !important;
+    background: #f0f0f0;
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 2px rgb(214, 214, 214);
+}
+
+.signup-card img {
+    margin-bottom: 20px;
+}
+
+input {
+    border: 1px solid rgb(226, 206, 206);
+    outline: none;
+    padding: 5px;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+input:focus {
+    box-shadow: inset 1px 1px 10px rgb(226, 226, 226);
+    border: 1px solid rgb(177, 177, 177);
+}
+
+.signup-card a {
+    border-radius: 0 !important;
+    margin-bottom: 5px;
+}
+
+.btn_cadastro {
+    margin-top: 10px !important;
+}
+
+.btn {
+    border-radius: 0 !important;
+}
+
+#map-canvas {
+    width:100%;
+    height:300px;
+    margin-top:10px;
+    box-shadow:0 2px 5px rgb(162,163,163);
+}

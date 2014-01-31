@@ -30,6 +30,9 @@ class TestFetcher(unittest.TestCase):
         self.assertTrue(self.fetcher._toDatabaseMeasureCollection(\
             samples.SAMPLE_TRUE_MEASURE_COLLECTION))
 
+    def test_fetch_data(self):
+        pass
+
 
 if __name__ == "__main__":
     unittest.main()

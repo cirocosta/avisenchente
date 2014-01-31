@@ -1,0 +1,4 @@
+cron:
+-   description: refresh the db for the tokens
+    url: /fetch_data
+    schedule: every 1 hours
