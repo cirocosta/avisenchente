@@ -15,5 +15,7 @@ class Measure(EndpointsModel):
 
     @classmethod
     def get_filtered_measures(cls, m_filter, token):
+    	""" Retorna as medidas do aparelho de um usuario que e 
+    		identificado por seu token """
     	return cls.query(cls.name == m_filter, cls.token == token).iter()
 

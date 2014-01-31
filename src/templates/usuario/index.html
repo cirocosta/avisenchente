@@ -24,7 +24,11 @@
   </div>
   <div class="col-md-9">
     <p class="lead text-muted">Visualização</p>
-
+    <ul class="list-unstyled">
+    {%for measure in measures%}
+      <li><strong>{{measure.name}}</strong> : {{measure.value}}</li>
+    {%endfor%}
+    </ul>
   </div> 
 </div>
 
