@@ -1,0 +1,29 @@
+{%extends 'base/base.html'%}
+{%block extrahead%}
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+{%endblock%}
+{%block content%}
+<div class="container">
+  <h3 class="text-muted text-center">Informações para o aparelho {name}</h2>
+  <hr>
+  <div class="col-md-3">
+    <p class="lead text-muted">Sensores</p>
+    <ul class="list-unstyled">
+      <li><a>Alerta</a></li>
+      <li><a>Luminosidade</a></li>
+      <li><a>Ruido</a></li>
+      <li><a>Temperatura</a></li>
+      <li><a>Humidade</a></li>
+    </ul>
+    <p class="lead text-muted">Períodos</p>
+    <ul class="list-unstyled">
+      <li><a>ashuash</a></li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <p class="lead text-muted">Visualização</p>
+
+  </div> 
+</div>
+{%endblock%}

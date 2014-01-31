@@ -12,4 +12,3 @@ class Measure(EndpointsModel):
     value = ndb.FloatProperty()
     sampling_time = ndb.DateProperty()
     inserted_at = ndb.DateProperty(auto_now_add=True)
-    

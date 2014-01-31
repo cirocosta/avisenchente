@@ -1,0 +1,92 @@
+{%extends 'base/base.html'%}
+{%block extrahead%}
+<link rel="stylesheet" type="text/css" href="/static/css/usuario_criar.css">
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?&sensor=true">
+</script>
+<script type="text/javascript" src="/static/js/maps_utils.js"></script>
+{%endblock%}
+{%block content%}
+<div class="container text-center">
+  <h1>Cadastrar Token</h1>
+  <h3>O primeiro passo para começar a contribuir</h3>
+  <div class="signup-card">
+    <img src="/static/img/qrcode.png" alt="Qr Code" class="img-circle">
+    <form method="POST" action="/usuario/criar">
+      <input id="i_nome" name="nome" placeholder="Nome para Aparelho"/><br>
+      <input id="i_token" name="token" placeholder="token" /><br>      
+    </form>
+  </div>
+
+  <h3>Diga-nos onde o aparelho estará realizando as medições</h3>
+  <input id="i_endereco" placeholder="Endereço"/>
+  <button id="b_buscar" class="btn btn-default">Buscar</button>
+  <div id="map-canvas"></div>
+  <button id="b_cadastrar" class="btn btn-primary">Cadastrar</button>
+
+</div>
+
+<script type="text/javascript">
+  /* Serialização de objetos simples para urlEncoded. Nao adiciona
+  os metodos na serializacao ao utilizarmos apenas 'ownProperty' */
+
+  function serializeObj(obj) {
+    var str = [];
+    for(var p in obj){
+      if (obj.hasOwnProperty(p)) {
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+      }
+    }
+
+    return str.join("&");
+  }
+
+
+  var i_endereco = document.getElementById("i_endereco");
+  var b_buscar = document.getElementById("b_buscar");
+  var b_cadastrar = document.getElementById("b_cadastrar");
+
+  /* Busca o LatLng do Endereco inputado no campo */
+
+  b_buscar.onclick = function() {
+    var valor_endereco = i_endereco.value;
+    console.log(codeAddress(geocoder, valor_endereco));
+  };
+
+  /* Obtem os valores inputados e faz um POST assincrono para o 
+    servidor. Havendo sucesso, usuario prossegue. */
+
+  b_cadastrar.onclick = function() {
+    var nome = document.getElementById("i_nome").value;
+    var token = document.getElementById("i_token").value;
+    var latlng_endereco = LATLNG_ADDRESS ? LATLNG_ADDRESS.toString : null;
+
+    if(nome && token && latlng_endereco) {      
+      var request = new XMLHttpRequest();
+      request.open('POST', '/usuario/criar', true);
+      request.setRequestHeader('Content-type', 
+                                'application/x-www-form-urlencoded');
+      request.onload = function() {
+        data = JSON.parse(this.response);
+        if(data.success == true) {
+          window.alert("Aparelho Cadastrado!");
+          window.setTimeout(function(){
+            window.location.href = "/usuario";
+          }, 2000);
+        } else {
+          window.alert("Houve algum erro interno e o aparelho não pode ser" +
+            "cadastrado :(");
+        }
+      }
+      request.send(serializeObj({
+        nome: nome,
+        token: token,
+        endereco: latlng_endereco
+      }));
+    } else {
+      window.alert("Há campos não preenchidos");
+    }
+  };
+
+</script>
+{%endblock%}
