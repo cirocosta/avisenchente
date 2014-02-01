@@ -9,7 +9,10 @@ from views import regiao
 
 application = webapp2.WSGIApplication([
     ('/', index.IndexPage),
-    ('/pedido', pedido.SamplePedido,),
+    ('/saiba_mais', index.SaibaMaisPage,),
+    ('/adquirir', pedido.SamplePedido,),
+    ('/adquirir/carrinho', pedido.AdquirirCarrinho,),
+    ('/adquirir/carrinho/detalhes', pedido.CarrinhoDetalhes,),
     ('/usuario/token/([a-zA-Z0-9]+)', usuario.UsuarioIndex,),
     ('/usuario/criar', usuario.AparelhoCriar,),
     ('/usuario/login', usuario.Login,),

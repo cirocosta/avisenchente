@@ -1,0 +1,50 @@
+{%extends 'base/base.html'%}
+{%block title%}Faça seu Pedido{%endblock%}
+{%block extrahead%}
+<link rel="stylesheet" type="text/css" href="/static/css/pedidos.css">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+{%endblock%}
+{%block content%}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <img src="/static/img/enchentes1.jpg" alt="...">
+        <div class="produto">
+          <h3 class="text-center">Básico IoT</h3>
+          <p>
+            Informações sobre o produto e Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+          </p>
+          <p class="pull-right p_comprar">
+            <input class="i_qtd" placeholder="qtd."/>
+            <a href="/adquirir/carrinho" class="btn btn-success a_add_carrinho"><i class="fa fa-check-circle-o fa-fw"></i>Carrinho!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <img src="/static/img/enchentes1.jpg" alt="...">
+        <div class="produto">
+          <h3 class="text-center">Básico IoT</h3>
+          <p>
+            Informações sobre o produto e Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+          </p>
+          <p class="pull-right p_comprar">
+            <input class="i_qtd" placeholder="qtd."/>
+            <a href="#" class="btn btn-success a_add_carrinho"><i class="fa fa-check-circle-o fa-fw"></i>Carrinho!</a>
+          </p>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container text-right">
+    <a href="/adquirir/carrinho" id="a_carrinho"><i class="fa fa-shopping-cart"></i> Ir para o carrinho</a>
+  </div>
+</div>
+{%endblock%}

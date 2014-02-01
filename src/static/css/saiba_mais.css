@@ -1,0 +1,26 @@
+body {
+    margin-bottom: 70px;
+}
+
+header {
+    height: 400px;
+    color: #fff !important;
+	text-shadow: 0 1px rgb(184, 182, 182);
+    background: url(/static/img/viz.jpg) no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    min-height:100%;
+    position:relative;
+}
+
+header h1 {
+    font-size: 50px !important;
+    position: relative;
+    top: 30px;
+}
+
+nav {
+    margin-bottom: 0 !important;
+}

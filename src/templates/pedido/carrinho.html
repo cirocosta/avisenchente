@@ -1,0 +1,54 @@
+{%extends 'base/base.html'%}
+{%block extrahead%}
+<link rel="stylesheet" type="text/css" href="/static/css/carrinho.css">
+{%endblock%}
+{%block content%}
+<div class="container">
+  <h1>Seu carrinho</h1>
+
+  <table class="table table-hover">
+    <tr>
+      <th>Produto(s) no carrinho</th>
+      <th>Entrega</th>
+      <th>Qtd.</th>
+      <th>Valor unitário</th>
+      <th>Valor Total</th>
+    </tr>
+    <tr>
+      <td>Firefox OS</td>
+      <td>Sedex 10</td>
+      <td>13</td>
+      <td>R$ 209</td>
+      <td>R$ 2717</td>
+    </tr>
+    <tr>
+      <td>iPhone 5s</td>
+      <td>Sedex 10</td>
+      <td>1</td>
+      <td>R$ 2717</td>
+      <td>R$ 2717</td>
+    </tr>
+  </table>
+
+  <hr/>
+  <div class="cupons text-right">
+    <input placeholder="Cupom de desconto"/>
+    <button class="btn btn-success">OK!</button>
+    <h3><small>Valor Total:</small>R$ 5434</h3>
+    <p class="lead text-muted">Ou em até <strong>1050x R$5,99</strong> com juros!</p>
+  </div>
+
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <a href="/adquirir" class="btn btn-primary">Voltar às compras</a>
+    </div>
+    <div class="col-md-6 text-right">
+      <img src="https://www.paypal.com/pt_BR/i/btn/btn_xpressCheckout.gif" style="margin-right:7px; cursor: pointer">
+      <a href="/adquirir/carrinho/detalhes" class="btn btn-primary">Continuar</a>
+    </div>
+  </div>
+
+
+</div>
+{%endblock%}
