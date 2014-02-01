@@ -26,3 +26,13 @@ class CarrinhoDetalhes(webapp2.RequestHandler):
         template = settings.JINJA_ENVIRONMENT.get_template(
             'pedido/carrinho_detalhes.html')
         self.response.write(template.render(template_values))
+
+
+class CarrinhoFinalizar(webapp2.RequestHandler):
+
+    def get(self):
+        template_values = dict()
+        template = settings.JINJA_ENVIRONMENT.get_template(
+            'pedido/carrinho_finalizar.html')
+        self.response.write(template.render(template_values))
+

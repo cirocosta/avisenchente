@@ -9,12 +9,12 @@ class ExpressCheckout(object):
 
     VERSION = "109.0"
 
-    def __init__(self, username, password, signature, sandbox=False):
+    def __init__(self, username, password, signature,
+            endpoint=ENDPOINT_SANDBOX):
         self.username = username
         self.password = password
         self.signature = signature
-        if sandbox:
-            self.endpoint = ENDPOINT_SANDBOX
+        self.endpoint = endpoint
 
     def _post_data(self, url, data):
         """ Posts data to a given url
@@ -134,7 +134,7 @@ def main():
     password = 1390922883
     signature = "AFcWxV21C7fd0v3bYYYRCpSSRl31AFdl6Gwn9pQHqzliaz6mNHjRfG.k"
 
-    ec = ExpressCheckout(username,password,signature,True)
+    ec = ExpressCheckout(username,password,signature)
     response =  ec.setExpressCheckout("20.00","BRL","http://cirocosta.com/return",\
         "http://cirocosta.com/cancel")
     print response
