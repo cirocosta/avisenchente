@@ -1,0 +1,48 @@
+nav {
+    margin-bottom: 20px !important;
+}
+
+input {
+    border: 1px solid rgb(226, 206, 206);
+    outline: none;
+    padding: 5px;
+    font-size: 18px;
+    margin-bottom: 5px;
+    width: 80px;
+}
+
+input:focus {
+    box-shadow: inset 1px 1px 10px rgb(226, 226, 226);
+    border: 1px solid rgb(177, 177, 177);
+}
+
+.btn {
+    border-radius: 0 !important;
+}
+
+.produto p {
+    padding: 7px !important;
+    color:#aaa;
+}
+
+.p_comprar {
+    border: 1px solid rgb(224, 224, 224) !important;
+    background: white !important;
+    box-shadow: 0 1px 3px rgb(204, 204, 204) !important;
+}
+
+.thumbnail {
+    border-radius: 0 !important;
+    box-shadow: 0 2px #F1F1F1;
+}
+
+.thumbnail:hover {
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 15px #DDD;
+}
+
+#a_carrinho {
+    font-size: 25px !important;
+    text-shadow: 0 1px white !important;
+    color: rgb(63, 143, 56) !important;
+}

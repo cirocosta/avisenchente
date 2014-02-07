@@ -2,8 +2,10 @@
 {%block extrahead%}
 <style type="text/css">
   #map {
-    width: 400px;
+    width: 100%;
+    margin: auto;
     height: 200px;
+    box-shadow: 0 1px 5px #aaa;
   }
 </style>
 <script type="text/javascript"
@@ -17,10 +19,10 @@
   <p>
     Uma rede de aparelhos conectados para o bem comum: aumentar a previsão do risco de enchentes
   </p>
-  <button class="btn btn-primary">Saiba mais!</button>
+  <button class="btn btn-primary" onclick="window.location.href='/saiba_mais'">Saiba mais!</button>
 </header>
 
-<div class="container">
+<div class="container" style="padding-bottom: 10px;">
   <div class="row">
     <div class="col-md-3">
       <h2>Regiões</h2>

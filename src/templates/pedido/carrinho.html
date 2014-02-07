@@ -1,0 +1,99 @@
+{%extends 'base/base.html'%}
+{%block extrahead%}
+<link rel="stylesheet" type="text/css" href="/static/css/carrinho.css">
+{%endblock%}
+{%block content%}
+<div class="container">
+  <h1>Seu carrinho</h1>
+
+  <table class="table table-hover">
+    <tr>
+      <th>Produto(s) no carrinho</th>
+      <th>Entrega</th>
+      <th>Qtd.</th>
+      <th>Valor unitário</th>
+      <th>Valor Total</th>
+    </tr>
+    <tr>
+      <td>Firefox OS</td>
+      <td>Sedex 10</td>
+      <td>13</td>
+      <td>R$ 209</td>
+      <td>R$ 2717</td>
+    </tr>
+    <tr>
+      <td>iPhone 5s</td>
+      <td>Sedex 10</td>
+      <td>1</td>
+      <td>R$ 2717</td>
+      <td>R$ 2717</td>
+    </tr>
+  </table>
+
+  <hr/>
+  <div class="cupons text-right">
+    <input placeholder="Cupom de desconto"/>
+    <button class="btn btn-success">OK!</button>
+    <h3><small>Valor Total:</small>R$ 5434</h3>
+    <p class="lead text-muted">Ou em até <strong>1050x R$5,99</strong> com juros!</p>
+  </div>
+
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <a href="/adquirir" class="btn btn-primary">Voltar às compras</a>
+    </div>
+    <div class="col-md-6 text-right">
+      <img src="https://www.paypal.com/pt_BR/i/btn/btn_xpressCheckout.gif" style="margin-right:7px; cursor: pointer" onclick="paypal_setexpresscheckout()">
+      <a href="/adquirir/carrinho/detalhes" class="btn btn-primary">Continuar</a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  /* Serialização de objetos simples para urlEncoded. Nao adiciona
+  os metodos na serializacao ao utilizarmos apenas 'ownProperty' */
+
+  function serializeObj(obj) {
+    var str = [];
+    for(var p in obj){
+      if (obj.hasOwnProperty(p)) {
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+      }
+    }
+    return str.join("&");
+  }
+
+  /*  Faz a requisicao para obtencao do token com o metodo
+      setExpressCheckout e trata seu retorno,
+   */
+
+  function paypal_setexpresscheckout(){
+    var amount = "20.00";
+    var currency_id = "BRL";
+    var return_url = "http://avisenchente.appspot.com/paypal/getexpresscheckout";
+    var cancel_url = "http://avisenchente.appspot.com/adquirir/carrinho";
+
+    var request = new XMLHttpRequest();
+    request.open("POST", '/paypal/setexpresscheckout', true);
+    request.setRequestHeader('Content-Type',
+      'application/x-www-form-urlencoded');
+    request.onload = function(){
+      var data = JSON.parse(this.response);
+      var token = null;
+      if(data.success == true){
+        token = data.data.token;
+        window.location.href = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + token
+      }
+    }
+    request.send(serializeObj({
+      amount: amount,
+      currency_id: currency_id,
+      return_url: return_url,
+      cancel_url: cancel_url
+    }));  
+  }
+
+</script>
+{%endblock%}

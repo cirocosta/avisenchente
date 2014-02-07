@@ -7,7 +7,14 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions = ['jinja2.ext.autoescape'],
     autoescape = True,)
 
-# PayPal
+# PayPal Business Vendor
+
+PP_USER = "ciro9758_api1.gmail.com"
+PP_PASSWORD = "1390922883"
+PP_SIGNATURE = "AFcWxV21C7fd0v3bYYYRCpSSRl31AFdl6Gwn9pQHqzliaz6mNHjRfG.k"
+
+# PayPal client app
+
 PP_MODE = "sandbox"
 PP_TESTACCOUNT = "ciro.costa-facilitator@usp.br"
 PP_SANDBOX_ENDPOINT = "api.sandbox.paypal.com"

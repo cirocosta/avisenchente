@@ -1,0 +1,16 @@
+input {
+    border: 1px solid rgb(226, 206, 206);
+    outline: none;
+    padding: 5px;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+input:focus {
+    box-shadow: inset 1px 1px 10px rgb(226, 226, 226);
+    border: 1px solid rgb(177, 177, 177);
+}
+
+.btn {
+	border-radius: 0 !important;
+}

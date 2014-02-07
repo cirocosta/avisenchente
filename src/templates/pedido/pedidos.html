@@ -1,0 +1,54 @@
+{%extends 'base/base.html'%}
+{%block title%}Faça seu Pedido{%endblock%}
+{%block extrahead%}
+<link rel="stylesheet" type="text/css" href="/static/css/pedidos.css">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+{%endblock%}
+{%block content%}
+
+<div class="container">
+  <div class="row text-center">
+    <h3 class="text-muted">Quem bom que está interessado!</h3>
+    <h4 class="text-muted">Duas são as formas de começar a contribuir com sua região:</h4>
+    <div class="col-md-6">
+      <div class="thumbnail">
+        <img src="/static/img/enchentes1.jpg" alt="...">
+        <div class="produto">
+          <h3 class="text-center">Básico IoT</h3>
+          <p>
+          Pacote com aparelho IoT e seus conectores mínimos para coleta e compartilhamento de informações.
+          </p>
+          <h2 class="text-muted"><strong>R$49,90</strong></h2>
+          <p class="pull-right p_comprar">
+            <input class="i_qtd" placeholder="qtd."/>
+            <a href="/adquirir/carrinho" class="btn btn-success a_add_carrinho"><i class="fa fa-check-circle-o fa-fw"></i>Carrinho!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="thumbnail">
+        <img src="/static/img/enchentes1.jpg" alt="...">
+        <div class="produto">
+          <h3 class="text-center">IoT + Assistência</h3>
+          <p>
+            Pacote com o kit IoT completo somado a assistência mensal por parte da AvisEnchente. 
+          </p>
+          <h2 class="text-muted"><strong>R$49,90</strong> + R$5,00/mês</h2>
+          <p class="pull-right p_comprar">
+            <input class="i_qtd" placeholder="qtd."/>
+            <a href="#" class="btn btn-success a_add_carrinho"><i class="fa fa-check-circle-o fa-fw"></i>Carrinho!</a>
+          </p>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container text-right">
+    <a href="/adquirir/carrinho" id="a_carrinho"><i class="fa fa-shopping-cart"></i> Ir para o carrinho</a>
+  </div>
+</div>
+{%endblock%}
